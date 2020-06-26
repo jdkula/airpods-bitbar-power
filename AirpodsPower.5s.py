@@ -11,7 +11,7 @@
 # and gonzaloserrano's original BitBar plugin, https://getbitbar.com/plugins/System/AirPodsPower.sh
 # Icon by icons8 - https://visualpharm.com/free-icons/airpods-595b40b85ba036ed117dbec2 - filled in white by me.
 
-from subprocess import run
+from subprocess import run, PIPE, DEVNULL
 from re import search
 
 # These are some (all?) of the properties where we find battery percentages in /Library/Preferences/com.apple.Bluetooth
@@ -51,8 +51,9 @@ def get_device_metadata():
 
     sys_profile_lines = run(
         ["system_profiler", "SPBluetoothDataType"],
-        capture_output=True,
-        text=True).stdout.split("\n")
+        stdout=PIPE,
+        stderr=DEVNULL,
+        encoding="UTF-8").stdout.split("\n")
 
     for i in range(len(sys_profile_lines)):
         if is_headphone(sys_profile_lines[i]):
@@ -95,8 +96,9 @@ def get_device_info(metadata):
 
     bt_defaults_lines = run(
         ["defaults", "read", "/Library/Preferences/com.apple.Bluetooth"],
-        capture_output=True,
-        text=True).stdout.split("\n")
+        stdout=PIPE,
+        stderr=DEVNULL,
+        encoding="UTF-8").stdout.split("\n")
 
     for device in metadata:
         mac = device["mac"]
