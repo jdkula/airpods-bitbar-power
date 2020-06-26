@@ -89,7 +89,7 @@ if len(deviceInfo) > 0:
 else:
     print("✗", end='')
 
-print(" | image=" + AIRPODS_IMAGE)
+print(" | size=12 image=" + AIRPODS_IMAGE)
 print("---")
 print("Refresh | refresh=true")
 print("---")
