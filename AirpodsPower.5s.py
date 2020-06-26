@@ -8,6 +8,7 @@
 # <bitbar.dependencies>python3,blueutil</bitbar.dependencies>
 
 # Based on AirPods Battery CLI, Version 2.3 - https://github.com/duk242/AirPodsBatteryCLI
+# and gonzaloserrano's original BitBar plugin, https://getbitbar.com/plugins/System/AirPodsPower.sh
 # Icon by icons8 - https://visualpharm.com/free-icons/airpods-595b40b85ba036ed117dbec2
 
 from subprocess import run
